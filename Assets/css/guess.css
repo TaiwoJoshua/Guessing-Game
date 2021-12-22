@@ -137,9 +137,9 @@ button:hover{
     }
     #number{
         border-bottom: 1px solid #3EDBF0;
-        width: 20px;
+        width: 40px;
         height: 20px;
-        margin-left: 10px;
+        margin-left: 20px;
     }
     input[type="button"]{
         width: 30%;
