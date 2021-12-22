@@ -139,6 +139,7 @@ button:hover{
         border-bottom: 1px solid #3EDBF0;
         width: 20px;
         height: 20px;
+        margin-left: 10px;
     }
     input[type="button"]{
         width: 30%;
