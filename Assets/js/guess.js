@@ -1,5 +1,16 @@
+secrets = Math.floor(Math.random() *4) +2;
+function displayFunction(){
+    document.getElementById('displayblock').style.animationIterationCount = secrets;
+    document.getElementById('nodisplay').style.display = "none";
+    document.getElementById('displayblock').style.display = "block";
+    document.getElementById('ready').style.display = "block";
+    document.getElementById('whyno').style.display = "none";
+    setTimeout(() => ready.remove(), 1500);
+    
+}
+
 function myFunction(){
-    var secret = 8;
+    var secret = secrets * 2;
     var guess = document.getElementById('number').value;
 
         if(secret < guess){
@@ -19,13 +30,6 @@ function yourFunction(){
     location.reload();
 };
 
-function displayFunction(){
-    document.getElementById('nodisplay').style.display = "none";
-    document.getElementById('displayblock').style.display = "block";
-    document.getElementById('ready').style.display = "block";
-    setTimeout(() => ready.remove(), 1500);
-    
-}
 function noFunction(){
     document.getElementById('whyno').style.display = "block";
 }
