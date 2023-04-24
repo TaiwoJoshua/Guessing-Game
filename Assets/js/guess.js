@@ -1,49 +1,54 @@
-secrets = Math.floor(Math.random() *4) +2;
+secrets = Math.floor(Math.random() *4) + 2;
+function again(){
+    stopConfetti();
+    $('#number').val("");
+    $("#number").attr("readonly", false);
+    $("#nodisplay, .canyou").show();
+    $('#ready, #displayblock, .hello, #display, #submit').hide();
+    secrets = Math.floor(Math.random() *4) + 2;
+}
+console.log(secrets);
+
 function displayFunction(){
     document.getElementById('displayblock').style.animationIterationCount = secrets;
-    document.getElementById('nodisplay').style.display = "none";
-    document.getElementById('displayblock').style.display = "block";
-    document.getElementById('ready').style.display = "block";
-    document.getElementById('whyno').style.display = "none";
-    setTimeout(() => ready.remove(), 1500);
-    
+    $('#ready, #displayblock').show();
+    $('#whyno, #nodisplay, .canyou').hide();
+    setTimeout(() => $("#ready").hide(), 1500);
+    setTimeout(function(){
+        $("#display").css("display", "flex");
+        $("#submit").show();
+    }, (2000 + (1000 * secrets)));
 }
 
 function myFunction(){
     var secret = secrets * 2;
-    var guess = document.getElementById('number').value;
-        if(guess == ""){
-            document.getElementById('number').style.borderColor =  "red"; 
-            document.getElementById('none').style.display =  "block";
-            document.getElementById('high').style.display =  "none";
-            document.getElementById('low').style.display =  "none";
-            document.getElementById('right').style.display =  "none";
-        }else if(secret < guess){
-            document.getElementById('number').style.borderColor =  "red"; 
-            document.getElementById('high').style.display =  "block";
-            document.getElementById('none').style.display =  "none";
-            document.getElementById('low').style.display =  "none";
-            document.getElementById('right').style.display =  "none";
-        }
-        else if(secret > guess){
-            document.getElementById('number').style.borderColor =  "red"; 
-            document.getElementById('low').style.display =  "block";
-            document.getElementById('high').style.display =  "none";
-            document.getElementById('none').style.display =  "none";
-            document.getElementById('right').style.display =  "none";
-        }else{
-            document.getElementById('number').style.borderColor =  "green";
-            document.getElementById('right').style.display =  "block"; 
-            document.getElementById('high').style.display =  "none";
-            document.getElementById('low').style.display =  "none";
-            document.getElementById('none').style.display =  "none";
-        }
-    };
+    var guess = $('#number').val();
+    $(".hello").hide();
+    $("#number").attr("readonly", true);
+    if(guess == ""){
+        $('#number').css("border-bottom", "2px solid red"); 
+        $('#none').show();
+    }else if(secret < guess){
+        $('#number').css("border-bottom", "2px solid red"); 
+        $('#high').show();
+    }
+    else if(secret > guess){
+        $('#number').css("border-bottom", "2px solid red"); 
+        $('#low').show();
+    }else{
+        $('#number').css("border-bottom", "2px solid green"); 
+        startConfetti();
+        $('#right').show();
+    }
+};
 
 function yourFunction(){
-    location.reload();
+    $('#number').val("");
+    $(".hello").hide();
+    $('#number').css("border-bottom", "2px solid #04009A"); 
+    $("#number").attr("readonly", false);
 };
 
 function noFunction(){
-    document.getElementById('whyno').style.display = "block";
+    $('#whyno').show();
 }
