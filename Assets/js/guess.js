@@ -7,7 +7,6 @@ function again(){
     $('#ready, #displayblock, .hello, #display, #submit').hide();
     secrets = Math.floor(Math.random() *4) + 2;
 }
-console.log(secrets);
 
 function displayFunction(){
     document.getElementById('displayblock').style.animationIterationCount = secrets;
